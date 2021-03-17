@@ -1,6 +1,8 @@
 #include <iostream>
-#include <random>
 #include <vector>
+#include <random>
+#include <ctime>
+
 
 using namespace std;
 
@@ -63,20 +65,8 @@ private:
 };
 
 int main() {
-    Matrix mt;
-    mt.print();
-
-    for (int i = 0; i < 100; ++i) {
-        {
-            string input;
-            cin >> input;
-            if (input == "n") {
-                mt.change_one();
-                mt.print();
-            } else {
-                cout << "非法输入，请输入n" << endl;
-            }
-        }
+    srand(time(0));
+    for (int i = 0; i < 10; i++) {
+        cout << rand()%4 << endl;
     }
-    cout << "真有耐心！不跟你玩儿了" << endl;
 }

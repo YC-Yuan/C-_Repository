@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.cpp">
+			<Option target="Lab1"/>
+		</Unit>
+		<Unit filename="C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.h">
+			<Option target="Lab1"/>
+		</Unit>
 		<Unit filename="C:/Users/AAA/Desktop/C_Repository/Lab1/main.cpp">
 			<Option target="Lab1"/>
 		</Unit>

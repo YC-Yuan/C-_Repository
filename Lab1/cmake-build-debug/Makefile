@@ -142,6 +142,33 @@ Lab1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/build
 .PHONY : Lab1/fast
 
+GameBoard.obj: GameBoard.cpp.obj
+
+.PHONY : GameBoard.obj
+
+# target to build an object file
+GameBoard.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/GameBoard.cpp.obj
+.PHONY : GameBoard.cpp.obj
+
+GameBoard.i: GameBoard.cpp.i
+
+.PHONY : GameBoard.i
+
+# target to preprocess a source file
+GameBoard.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/GameBoard.cpp.i
+.PHONY : GameBoard.cpp.i
+
+GameBoard.s: GameBoard.cpp.s
+
+.PHONY : GameBoard.s
+
+# target to generate assembly for a file
+GameBoard.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/GameBoard.cpp.s
+.PHONY : GameBoard.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Lab1
+	@echo ... GameBoard.obj
+	@echo ... GameBoard.i
+	@echo ... GameBoard.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -6,11 +6,25 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.cpp
+random
+-
+ctime
+-
+GameBoard.h
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.h
+
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.h
+string
+-
+
 C:/Users/AAA/Desktop/C_Repository/Lab1/main.cpp
 iostream
 -
+vector
+-
 random
 -
-vector
+ctime
 -
 

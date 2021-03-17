@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Lab1.dir/GameBoard.cpp.obj"
   "CMakeFiles/Lab1.dir/main.cpp.obj"
   "Lab1.exe"
   "Lab1.exe.manifest"
