@@ -3,6 +3,8 @@
 #include <random>
 #include <ctime>
 
+#include "GameBoard.h"
+
 
 using namespace std;
 
@@ -65,8 +67,6 @@ private:
 };
 
 int main() {
-    srand(time(0));
-    for (int i = 0; i < 10; i++) {
-        cout << rand()%4 << endl;
-    }
+    GameBoard gameBoard;
+    gameBoard.start();
 }

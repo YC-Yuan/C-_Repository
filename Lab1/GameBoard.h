@@ -11,7 +11,7 @@ using namespace std;
 
 class GameBoard {
     bool test_mode;
-    int board[4][4]{};
+    int board[4][4];
     int node_num;
     int node_max;
     int score;
@@ -24,7 +24,11 @@ public:
 private:
     void print();
 
-    void move(const string &para);
+    void move(char direction);
+
+    void move_one(int location_self[2], char direction);
+
+    bool merge(const int location_self[2], const int location_target[2]);
 
     void generate_node();
 

@@ -4,5 +4,6 @@
 CMakeFiles/Lab1.dir/GameBoard.cpp.obj: ../GameBoard.cpp
 CMakeFiles/Lab1.dir/GameBoard.cpp.obj: ../GameBoard.h
 
+CMakeFiles/Lab1.dir/main.cpp.obj: ../GameBoard.h
 CMakeFiles/Lab1.dir/main.cpp.obj: ../main.cpp
 
