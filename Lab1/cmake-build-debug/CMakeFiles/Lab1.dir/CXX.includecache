@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/15344/Desktop/C_Repository/Lab1/GameBoard.cpp
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.cpp
 iostream
 -
 iomanip
@@ -14,13 +14,13 @@ iomanip
 ctime
 -
 GameBoard.h
-C:/Users/15344/Desktop/C_Repository/Lab1/GameBoard.h
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.h
 
-C:/Users/15344/Desktop/C_Repository/Lab1/GameBoard.h
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.h
 string
 -
 
-C:/Users/15344/Desktop/C_Repository/Lab1/main.cpp
+C:/Users/AAA/Desktop/C_Repository/Lab1/main.cpp
 iostream
 -
 vector
@@ -29,6 +29,8 @@ random
 -
 ctime
 -
+string
+-
 GameBoard.h
-C:/Users/15344/Desktop/C_Repository/Lab1/GameBoard.h
+C:/Users/AAA/Desktop/C_Repository/Lab1/GameBoard.h
 

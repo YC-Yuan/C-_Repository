@@ -11,7 +11,9 @@ using namespace std;
 
 GameBoard::GameBoard() {
     test_mode = false;
+    //node_num only modified in function generate_node() and function merge()
     node_num = 0;
+    //node_max only modified in function merge when a new biggest number appear
     node_max = 2;
     score = 0;
     for (auto &i : board) {
@@ -19,24 +21,32 @@ GameBoard::GameBoard() {
             j = 0;
         }
     }
+    //this will set node_num to 1
     generate_node();
 }
 
 void GameBoard::start() {
     print();
-    while (true) {
+    while (!is_over()) {
         char direction;
         cin >> direction;
-        if (direction == 'U') move(direction);
-        generate_node();
+        if (direction == 'W' or direction == 'S' or direction == 'A' or direction == 'D') {
+            if (move(direction)) {
+                generate_node();
+            }
+        } else {
+            cout << "ÎÞÐ§ÊäÈë£¬ÇëÊ¹ÓÃU D L R±íÊ¾ÉÏÏÂ×óÓÒ" << endl;
+        }
         print();
+        cout << "num£º" << node_num << endl;
+        cout << "max:" << node_max << endl;
     }
-
+    cout << "ÓÎÏ·½áÊø£¡" << endl;
 }
 
 void GameBoard::generate_node() {
     if (node_num == 16) {
-        cout << "æ£‹ç›˜æ»¡äº†ï¼Œä¸åº”è¯¥å†ç”Ÿæˆæ–°æ•°å­—ï¼" << endl;
+        cout << "ÆåÅÌÂúÁË£¬²»Ó¦¸ÃÔÙÉú³ÉÐÂÊý×Ö£¡" << endl;
     }
     srand(time(nullptr));
     bool is_set = false;
@@ -51,8 +61,24 @@ void GameBoard::generate_node() {
     }
 }
 
-void GameBoard::is_over() {
+bool GameBoard::is_over() {
+    // test_mode condition
+    if (test_mode) {
+        if (node_max >= 64) {
+            return true;
+        }
+    }
 
+    // can move or not
+    if (node_num <= 16) { return false; }
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            if (board[i][j] == board[i + 1][j] || board[i][j] == board[i][j + 1]) { return false; }
+        }
+    }
+    if (board[3][3] == board[2][3]) return false;
+    if (board[3][3] == board[3][2]) return false;
+    return true;
 }
 
 void GameBoard::print() {
@@ -81,68 +107,130 @@ void GameBoard::print() {
     cout << border << endl;
 }
 
-bool GameBoard::merge(const int *location_self, const int *location_target) {
-    cout << "before merge" << endl;
-    print();
-    cout << "self:" << location_self[0] << location_self[1] << endl;
-    cout << "target:" << location_target[0] << location_target[1] << endl;
 
+bool GameBoard::move(char direction) {
+    bool is_moved = false;
+    switch (direction) {
+        case 'W':
+            for (int i = 0; i < 4; ++i) {
+                for (int j = 0; j < 4; ++j) {
+                    int location_self[2] = {i, j};
+                    if (move_one(location_self, direction)) {
+                        is_moved = true;
+                    }
+                }
+            }
+            break;
+        case 'S':
+            for (int i = 3; i >= 0; --i) {
+                for (int j = 0; j < 4; ++j) {
+                    int location_self[2] = {i, j};
+                    if (move_one(location_self, direction)) {
+                        is_moved = true;
+                    }
+                }
+            }
+            break;
+        case 'A':
+            for (int i = 0; i < 4; ++i) {
+                for (int j = 0; j < 4; ++j) {
+                    int location_self[2] = {j, i};
+                    if (move_one(location_self, direction)) {
+                        is_moved = true;
+                    }
+                }
+            }
+            break;
+        case 'D':
+            for (int i = 3; i >= 0; --i) {
+                for (int j = 0; j < 4; ++j) {
+                    int location_self[2] = {j, i};
+                    if (move_one(location_self, direction)) {
+                        is_moved = true;
+                    }
+                }
+            }
+            break;
+    }
+    return is_moved;
+}
+
+bool GameBoard::move_one(int *location_self, char direction) {
+    bool is_moved = false;
+    location_self[0];
+    location_self[1];
+    if (board[location_self[0]][location_self[1]] == 0) return is_moved;
+    int target_row = location_self[0];
+    int target_col = location_self[1];
+    //decide target according to direction
+    switch (direction) {
+        case 'W':
+            target_row--;
+            break;
+        case 'S':
+            target_row++;
+            break;
+        case 'A':
+            target_col--;
+            break;
+        case 'D':
+            target_col++;
+            break;
+    }
+    while (target_row >= 0 && target_row < 4 && target_col < 4 && target_col >= 0) {
+        if (board[target_row][target_col] != 0 &&
+            board[target_row][target_col] != board[location_self[0]][location_self[1]]) {
+            break;
+        }
+        int location_target[2] = {target_row, target_col};
+        is_moved = true;
+        if (merge(location_self, location_target)) { break; }
+        //complete movement after merge and decide new target
+        switch (direction) {
+            case 'W':
+                location_self[0]--;
+                target_row--;
+                break;
+            case 'S':
+                location_self[0]++;
+                target_row++;
+                break;
+            case 'A':
+                location_self[1]--;
+                target_col--;
+                break;
+            case 'D':
+                location_self[1]++;
+                target_col++;
+                break;
+        }
+    }
+    return is_moved;
+}
+
+bool GameBoard::merge(const int *location_self, const int *location_target) {
+    bool is_merged = false;
+//    cout << "before merge" << endl;
+//    print();
+//    cout << "self:" << location_self[0] << location_self[1] << endl;
+//    cout << "target:" << location_target[0] << location_target[1] << endl;
     int self_row = location_self[0];
     int self_col = location_self[1];
     int target_row = location_target[0];
     int target_col = location_target[1];
-    bool is_merged = board[target_row][target_col] != 0;
+    if (board[target_row][target_col] != 0) {
+        is_merged = true;
+        node_num--;
+    }
     board[target_row][target_col] += board[self_row][self_col];
     node_max = max(node_max, board[target_row][target_col]);
     board[self_row][self_col] = 0;
-    cout << "after merge" << endl;
-    print();
+//    cout << "after merge" << endl;
+//    print();
     return is_merged;
 }
 
-void GameBoard::move(char direction) {
-    switch (direction) {
-        case 'U':
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 0; j < 4; ++j) {
-                    int location_self[2] = {i, j};
-                    move_one(location_self, direction);
-                }
-            }
-            break;
-        case 'D':
-            break;
-        case 'L':
-            break;
-        case 'R':
-            break;
-    }
-}
+void GameBoard::test_mode_on() {
+    test_mode = true;
 
-void GameBoard::move_one(int *location_self, char direction) {
-    int self_row = location_self[0];
-    int self_col = location_self[1];
-    if (board[self_row][self_col] == 0) return;
-    int target_row = self_row;
-    int target_col = self_col;
-    switch (direction) {
-        case 'U':
-            target_row--;
-            while (target_row >= 0) {
-                if (board[target_row][target_col] != 0 && board[target_row][target_col] != board[self_row][self_col]) {
-                    break;
-                }
-                int location_target[2] = {target_row, target_col};
-                merge(location_self, location_target);
-                location_self[0] --;
-                target_row--;
-            }
-            break;
-        case 'D':
-            break;
-        case 'L':
-            break;
-        case 'R':
-            break;
-    }
 }

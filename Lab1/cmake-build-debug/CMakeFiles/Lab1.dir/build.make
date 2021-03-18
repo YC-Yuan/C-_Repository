@@ -53,19 +53,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\15344\Desktop\C_Repository\Lab1
+CMAKE_SOURCE_DIR = C:\Users\AAA\Desktop\C_Repository\Lab1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Lab1.dir/depend.make
@@ -78,29 +78,29 @@ include CMakeFiles/Lab1.dir/flags.make
 
 CMakeFiles/Lab1.dir/main.cpp.obj: CMakeFiles/Lab1.dir/flags.make
 CMakeFiles/Lab1.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Lab1.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\main.cpp.obj -c C:\Users\15344\Desktop\C_Repository\Lab1\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Lab1.dir/main.cpp.obj"
+	D:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\main.cpp.obj -c C:\Users\AAA\Desktop\C_Repository\Lab1\main.cpp
 
 CMakeFiles/Lab1.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\15344\Desktop\C_Repository\Lab1\main.cpp > CMakeFiles\Lab1.dir\main.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\AAA\Desktop\C_Repository\Lab1\main.cpp > CMakeFiles\Lab1.dir\main.cpp.i
 
 CMakeFiles/Lab1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\15344\Desktop\C_Repository\Lab1\main.cpp -o CMakeFiles\Lab1.dir\main.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\AAA\Desktop\C_Repository\Lab1\main.cpp -o CMakeFiles\Lab1.dir\main.cpp.s
 
 CMakeFiles/Lab1.dir/GameBoard.cpp.obj: CMakeFiles/Lab1.dir/flags.make
 CMakeFiles/Lab1.dir/GameBoard.cpp.obj: ../GameBoard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lab1.dir/GameBoard.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\GameBoard.cpp.obj -c C:\Users\15344\Desktop\C_Repository\Lab1\GameBoard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lab1.dir/GameBoard.cpp.obj"
+	D:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\GameBoard.cpp.obj -c C:\Users\AAA\Desktop\C_Repository\Lab1\GameBoard.cpp
 
 CMakeFiles/Lab1.dir/GameBoard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/GameBoard.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\15344\Desktop\C_Repository\Lab1\GameBoard.cpp > CMakeFiles\Lab1.dir\GameBoard.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\AAA\Desktop\C_Repository\Lab1\GameBoard.cpp > CMakeFiles\Lab1.dir\GameBoard.cpp.i
 
 CMakeFiles/Lab1.dir/GameBoard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/GameBoard.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\15344\Desktop\C_Repository\Lab1\GameBoard.cpp -o CMakeFiles\Lab1.dir\GameBoard.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\AAA\Desktop\C_Repository\Lab1\GameBoard.cpp -o CMakeFiles\Lab1.dir\GameBoard.cpp.s
 
 # Object files for target Lab1
 Lab1_OBJECTS = \
@@ -116,7 +116,7 @@ Lab1.exe: CMakeFiles/Lab1.dir/build.make
 Lab1.exe: CMakeFiles/Lab1.dir/linklibs.rsp
 Lab1.exe: CMakeFiles/Lab1.dir/objects1.rsp
 Lab1.exe: CMakeFiles/Lab1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Lab1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Lab1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Lab1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -129,6 +129,6 @@ CMakeFiles/Lab1.dir/clean:
 .PHONY : CMakeFiles/Lab1.dir/clean
 
 CMakeFiles/Lab1.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\15344\Desktop\C_Repository\Lab1 C:\Users\15344\Desktop\C_Repository\Lab1 C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug C:\Users\15344\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles\Lab1.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\AAA\Desktop\C_Repository\Lab1 C:\Users\AAA\Desktop\C_Repository\Lab1 C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug C:\Users\AAA\Desktop\C_Repository\Lab1\cmake-build-debug\CMakeFiles\Lab1.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Lab1.dir/depend
 
