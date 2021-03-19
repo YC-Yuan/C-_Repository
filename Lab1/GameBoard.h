@@ -33,17 +33,16 @@ private:
     void print();
 
     /*
-     * Summary: let all the numbers move, call function move() inside
+     * Summary: use move_one on all numbers
      * Parameter:
-     *     direction: the direction to move, valid inputs are 'W' 'S' 'A' 'D'
-     *                also determine the order to move numbers
+     *     direction: how to move, also determine the order to move numbers
      * Return:
-     *     true if at least one number is moved
+     *     true if at least one number moved
      */
     bool move(char direction);
 
     /*
-     * Summary: let one number move toward a direction until it cannot move any more
+     * Summary: use move_one on all numbers
      * Parameter:
      *     location_self: two ints represents the location of number
      *     direction: the direction to move
@@ -53,15 +52,23 @@ private:
     bool move_one(int location_self[2], char direction);
 
     /*
-     * Summary: add one number to another and set the first one to zero
+     * Summary: use merge_one on all numbers
      * Parameter:
-     *     location_self: two ints represents the location of the moving number
-     *     location_target: two ints represents the location of the target number
+     *     direction: how to merge, also determine the order to merge numbers
      * Return:
-     *     true if there are two non-zero numbers merged
-     *     false if we just move a number to a zero ground
+     *     true if at least two numbers merged
      */
-    bool merge(const int location_self[2], const int location_target[2]);
+    bool merge(char direction);
+
+    /*
+     * Summary: try merge a number with its neighbor
+     * Parameter:
+     *     location_self: location of the moving number
+     *     direction: the direction to merge
+     * Return:
+     *     true if successfully merged
+     * */
+    bool merge_one(const int location_self[2], char direction);
 
     /*
      * Summary: randomly generate a new number 2 in the board
@@ -75,6 +82,15 @@ private:
      *     when test_mode turned on, the game would be over if a number becomes 64
      * */
     bool is_over();
+
+    /*
+     * Summary: whether a location is out of the board
+     * Parameter:
+     *     row: row of location
+     *     col: col of location
+     * Return:
+     *     true if the location is out(row or col not in [0,4))*/
+    bool is_out(int row, int col);
 };
 
 
