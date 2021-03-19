@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
         string test_mode = "-t";
         if (test_mode == (argv[i])) {
             cout << argv[i] << endl;
+            gameBoard.test_mode_on();
         }
     }
     gameBoard.start();
