@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < argc; ++i) {
         string test_mode = "-t";
         if (test_mode == (argv[i])) {
-            cout << "测试模式，第一个64出现时游戏即结束" << endl;
+            cout << "test_mode on" << endl;
             gameBoard.test_mode_on();
         }
     }

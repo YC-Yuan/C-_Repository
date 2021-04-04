@@ -11,11 +11,13 @@ using namespace std;
 
 GameBoard::GameBoard() {
     test_mode = false;
+    multi_mode = false;
+
     //node_num only modified in function generate_node() and function merge()
     node_num = 0;
     //node_max only modified in function merge when a new biggest number appear
     node_max = 2;
-    score = 0;
+
     for (auto &i : board) {
         for (int &j : i) {
             j = 0;
@@ -26,26 +28,71 @@ GameBoard::GameBoard() {
 }
 
 void GameBoard::start() {
-    cout << "输入WSAD表示上下左右，回车以确定" << endl;
+    cout << "请进行模式选择" << endl;
+    cout << "1:单人模式" << endl;
+    cout << "2:双人模式" << endl;
+    cout << "请输入对应的模式序号" << endl;
+    while (true) {
+        string mode;
+        cin >> mode;
+        if (mode == "1") {
+            string name;
+            cout << "请玩家输入名称:" << endl;
+            cin >> name;
+            player_name[0] = name;
+            break;
+        } else if (mode == "2") {
+            multi_mode = true;
+            string name;
+            cout << "请玩家一输入名称:" << endl;
+            cin >> name;
+            player_name[0] = name;
+            cout << "请玩家二输入名称:" << endl;
+            cin >> name;
+            player_name[1] = name;
+            break;
+        } else {
+            cout << "请输入1或2选择模式" << endl;
+        }
+    }
     print();
-    while (!is_over()) {
-        char direction;
+    cout << "输入 W S A D 表示上下左右，以回车确定" << endl;
+
+    while (true) {
+        string direction;
         cin >> direction;
-        if (direction == 'W' or direction == 'S' or direction == 'A' or direction == 'D') {
-            int is_changed = move(direction);
-            is_changed = merge(direction) or is_changed;
-            move(direction);
+        if (direction == "W" or direction == "S" or direction == "A" or direction == "D") {
+            int is_changed = move(direction[0]);
+            is_changed = merge(direction[0]) or is_changed;
+            move(direction[0]);
             if (is_changed) {
                 generate_node();
+                if (is_over()) { break; }
+                cout << player_name[turn] << "当前分数为:" << player_score[turn] << endl;
+                if (multi_mode) {// change player
+                    turn = (turn + 1) % 2;
+                    cout << "请" << player_name[turn] << "进行操作" << endl;
+                }
             }
         } else {
-            cout << "无效输入，请使用U D L R表示上下左右" << endl;
+            cout << "无效输入，请使用 W S A D 表示上下左右" << endl;
         }
         print();
-//        cout << "num：" << node_num << endl;
-//        cout << "max:" << node_max << endl;
     }
-    cout << "游戏结束！" << endl;
+    if (multi_mode) {
+        cout << player_name[0] << "当前分数为:" << player_score[0] << endl;
+        cout << player_name[1] << "当前分数为:" << player_score[1] << endl;
+        if (player_score[0] == player_score[1]) { cout << "打成平局!" << endl; }
+        else {
+            int winner = 0;
+            if (player_score[0] < player_score[1]) { winner = 1; }
+            cout << "胜利者为" << player_name[winner] << endl;
+        }
+    } else {
+        cout << player_name[turn] << "最终分数为:" << player_score[turn] << endl;
+    }
+
+    cout << "最大方块达到" << node_max << ",游戏结束！" << endl;
 }
 
 void GameBoard::generate_node() {
@@ -268,6 +315,7 @@ bool GameBoard::merge_one(const int *location_self, char direction) {
         node_max = max(node_max, board[target_row][target_col]);
         node_num--;
         is_merged = true;
+        player_score[turn] += board[target_row][target_col];
     }
     return is_merged;
 }

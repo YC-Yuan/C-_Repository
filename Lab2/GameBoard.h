@@ -14,7 +14,11 @@ class GameBoard {
     int board[4][4]{};
     int node_num;
     int node_max;
-    int score;
+
+    string player_name[2];
+    int player_score[2]{0,0};
+    int turn=0;
+    bool multi_mode;
 
 public:
     GameBoard();
