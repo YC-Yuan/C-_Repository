@@ -6,19 +6,28 @@
 #define LAB1_GAMEBOARD_H
 
 #include <string>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <iomanip>
+#include <ctime>
 
 using namespace std;
 
 class GameBoard {
-    bool test_mode;
-    int board[4][4]{};
-    int node_num;
-    int node_max;
+    int boardSize = 4;
+    vector<vector<int>> board;
+    //node_num only modified in function generate_node() and function merge()
+    int node_num = 0;
+    //node_max only modified in function merge when a new biggest number appear
+    int node_max = 2;
 
     string player_name[2];
-    int player_score[2]{0,0};
-    int turn=0;
-    bool multi_mode;
+
+    int player_score[2]{0, 0};
+    int turn = 0;
+    bool test_mode = false;
+    bool multi_mode = false;
 
 public:
     GameBoard();
@@ -29,6 +38,8 @@ public:
     void start();
 
     void test_mode_on();
+
+    void boardInit(int size);
 
 private:
     /*

@@ -2,23 +2,17 @@
 // Created by AAA on 2021/3/15.
 //
 
-#include <iostream>
-#include <iomanip>
-#include <ctime>
 #include "GameBoard.h"
 
 using namespace std;
 
-GameBoard::GameBoard() {
-    test_mode = false;
-    multi_mode = false;
+GameBoard::GameBoard() = default;
 
-    //node_num only modified in function generate_node() and function merge()
-    node_num = 0;
-    //node_max only modified in function merge when a new biggest number appear
-    node_max = 2;
-
+void GameBoard::boardInit(int size) {
+    boardSize = size;
+    this->board.resize(boardSize);
     for (auto &i : board) {
+        i.resize(boardSize);
         for (int &j : i) {
             j = 0;
         }
@@ -62,9 +56,10 @@ void GameBoard::start() {
         string direction;
         cin >> direction;
         if (direction == "W" or direction == "S" or direction == "A" or direction == "D") {
-            int is_changed = move(direction[0]);
-            is_changed = merge(direction[0]) or is_changed;
+            bool is_moved = move(direction[0]);
+            bool is_merged = merge(direction[0]);
             move(direction[0]);
+            bool is_changed = is_merged or is_moved;
             if (is_changed) {
                 generate_node();
                 if (is_over()) { break; }
@@ -102,8 +97,8 @@ void GameBoard::generate_node() {
     srand(time(nullptr));
     bool is_set = false;
     while (!is_set) {
-        int random_row = rand() % 4;
-        int random_col = rand() % 4;
+        int random_row = rand() % boardSize;
+        int random_col = rand() % boardSize;
         if (board[random_row][random_col] == 0) {
             board[random_row][random_col] = 2;
             node_num++;
@@ -121,40 +116,38 @@ bool GameBoard::is_over() {
     }
 
     // can move or not
-    if (node_num <= 16) { return false; }
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
+    int node_max_num = boardSize * boardSize;
+    if (node_num <= node_max_num) { return false; }
+
+    int smallSize = boardSize - 1;
+    // 对左上角(boardSize-1)*(boardSize-1)的方阵，检测其与右、下是否可合并
+    for (int i = 0; i < smallSize; ++i) {
+        for (int j = 0; j < smallSize; ++j) {
             if (board[i][j] == board[i + 1][j] || board[i][j] == board[i][j + 1]) { return false; }
         }
     }
-    if (board[3][3] == board[2][3]) return false;
-    if (board[3][3] == board[3][2]) return false;
+    //对最下行和最右列，检测其内部的是否可合并
+    for (int i = 0; i < smallSize; ++i) {
+        if (board[smallSize][i] == board[smallSize][i + 1] ||
+            board[i][smallSize] == board[i + 1][smallSize]) { return false; }
+    }
     return true;
 }
 
 void GameBoard::print() {
-    char border[] = "+-----+-----+-----+-----+";
     char split = '|';
-    cout << border << endl;
-    cout << split << setw(5) << board[0][0];
-    cout << split << setw(5) << board[0][1];
-    cout << split << setw(5) << board[0][2];
-    cout << split << setw(5) << board[0][3] << split << endl;
-    cout << border << endl;
-    cout << split << setw(5) << board[1][0];
-    cout << split << setw(5) << board[1][1];
-    cout << split << setw(5) << board[1][2];
-    cout << split << setw(5) << board[1][3] << split << endl;
-    cout << border << endl;
-    cout << split << setw(5) << board[2][0];
-    cout << split << setw(5) << board[2][1];
-    cout << split << setw(5) << board[2][2];
-    cout << split << setw(5) << board[2][3] << split << endl;
-    cout << border << endl;
-    cout << split << setw(5) << board[3][0];
-    cout << split << setw(5) << board[3][1];
-    cout << split << setw(5) << board[3][2];
-    cout << split << setw(5) << board[3][3] << split << endl;
+    string border = "+";
+
+    for (int i = 0; i < boardSize; i++) {
+        border.append("-----+");
+    }
+    for (int i = 0; i < boardSize; i++) {
+        cout << border << endl;
+        for (int j = 0; j < boardSize; j++) {
+            cout << split << setw(5) << board[i][j];
+        }
+        cout << split << endl;
+    }
     cout << border << endl;
 }
 
@@ -163,8 +156,8 @@ bool GameBoard::move(char direction) {
     bool is_moved = false;
     switch (direction) {
         case 'W':
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 0; j < 4; ++j) {
+            for (int i = 0; i < boardSize; ++i) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {i, j};
                     if (move_one(location_self, direction)) {
                         is_moved = true;
@@ -174,7 +167,7 @@ bool GameBoard::move(char direction) {
             break;
         case 'S':
             for (int i = 3; i >= 0; --i) {
-                for (int j = 0; j < 4; ++j) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {i, j};
                     if (move_one(location_self, direction)) {
                         is_moved = true;
@@ -183,8 +176,8 @@ bool GameBoard::move(char direction) {
             }
             break;
         case 'A':
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 0; j < 4; ++j) {
+            for (int i = 0; i < boardSize; ++i) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {j, i};
                     if (move_one(location_self, direction)) {
                         is_moved = true;
@@ -194,7 +187,7 @@ bool GameBoard::move(char direction) {
             break;
         case 'D':
             for (int i = 3; i >= 0; --i) {
-                for (int j = 0; j < 4; ++j) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {j, i};
                     if (move_one(location_self, direction)) {
                         is_moved = true;
@@ -211,6 +204,7 @@ bool GameBoard::move_one(int *location_self, char direction) {
     do {
         int self_row = location_self[0];
         int self_col = location_self[1];
+        if (board[self_row][self_col] == 0) { break; }
         int target_row = self_row;
         int target_col = self_col;
         switch (direction) {
@@ -244,8 +238,8 @@ bool GameBoard::merge(char direction) {
     bool is_merged = false;
     switch (direction) {
         case 'W':
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 0; j < 4; ++j) {
+            for (int i = 0; i < boardSize; ++i) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {i, j};
                     if (merge_one(location_self, direction)) {
                         is_merged = true;
@@ -255,7 +249,7 @@ bool GameBoard::merge(char direction) {
             break;
         case 'S':
             for (int i = 3; i >= 0; --i) {
-                for (int j = 0; j < 4; ++j) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {i, j};
                     if (merge_one(location_self, direction)) {
                         is_merged = true;
@@ -264,8 +258,8 @@ bool GameBoard::merge(char direction) {
             }
             break;
         case 'A':
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 0; j < 4; ++j) {
+            for (int i = 0; i < boardSize; ++i) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {j, i};
                     if (merge_one(location_self, direction)) {
                         is_merged = true;
@@ -275,7 +269,7 @@ bool GameBoard::merge(char direction) {
             break;
         case 'D':
             for (int i = 3; i >= 0; --i) {
-                for (int j = 0; j < 4; ++j) {
+                for (int j = 0; j < boardSize; ++j) {
                     int location_self[2] = {j, i};
                     if (merge_one(location_self, direction)) {
                         is_merged = true;
@@ -326,7 +320,7 @@ void GameBoard::test_mode_on() {
 }
 
 bool GameBoard::is_out(int row, int col) {
-    if (row > 3 or row < 0) return true;
-    if (col > 3 or col < 0) return true;
+    if (row > boardSize - 1 or row < 0) return true;
+    if (col > boardSize - 1 or col < 0) return true;
     return false;
 }
