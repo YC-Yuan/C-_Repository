@@ -67,13 +67,25 @@ void GameBoard::start() {
                 if (multi_mode) {// change player
                     turn = (turn + 1) % 2;
                     cout << "请" << player_name[turn] << "进行操作" << endl;
+                    if (cheat_mode) {
+
+                    }
                 }
+            }
+        } else if (multi_mode && direction == "c") {
+            //检测到作弊码
+            if (!has_cheat && !cheat_mode) {
+                //检测到作弊码 且之前没有作弊过
+                cheat_mode = true;
+                cin >> cheat_content;
+                cout << cheat_content << endl;
             }
         } else {
             cout << "无效输入，请使用 W S A D 表示上下左右" << endl;
         }
         print();
     }
+
     if (multi_mode) {
         cout << player_name[0] << "当前分数为:" << player_score[0] << endl;
         cout << player_name[1] << "当前分数为:" << player_score[1] << endl;

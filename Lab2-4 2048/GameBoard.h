@@ -25,9 +25,12 @@ class GameBoard {
     string player_name[2];
 
     int player_score[2]{0, 0};
-    int turn = 0;
+    int turn = 0;// 0表示玩家1,1表示玩家2
     bool test_mode = false;
     bool multi_mode = false;
+    bool cheat_mode = false;
+    bool has_cheat = false;
+    string cheat_content;
 
 public:
     GameBoard();
