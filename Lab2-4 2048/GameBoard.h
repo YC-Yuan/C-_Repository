@@ -10,13 +10,14 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 #include <ctime>
 
 using namespace std;
 
 class GameBoard {
     int boardSize = 4;
-    vector<vector<int>> board;
+    vector <vector<int>> board;
     //node_num only modified in function generate_node() and function merge()
     int node_num = 0;
     //node_max only modified in function merge when a new biggest number appear
@@ -26,6 +27,7 @@ class GameBoard {
 
     int player_score[2]{0, 0};
     int turn = 0;// 0表示玩家1,1表示玩家2
+    int cheat_turn = 0;
     bool test_mode = false;
     bool multi_mode = false;
     bool cheat_mode = false;
@@ -109,6 +111,13 @@ private:
      * Return:
      *     true if the location is out(row or col not in [0,4))*/
     bool is_out(int row, int col);
+
+    bool can_merge();
+
+    char check_limited_move();
+
+    //输入棋盘中的某行，查看是否有移动空间。移动方向默认为先输入的参数方向
+    bool can_move_line(vector<int> line);
 };
 
 

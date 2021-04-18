@@ -64,24 +64,33 @@ void GameBoard::start() {
                 generate_node();
                 if (is_over()) { break; }
                 cout << player_name[turn] << "当前分数为:" << player_score[turn] << endl;
-                if (multi_mode) {// change player
+                if (multi_mode) {
                     turn = (turn + 1) % 2;
+                    // change player
                     cout << "请" << player_name[turn] << "进行操作" << endl;
-                    if (cheat_mode) {
-
+                    if (cheat_mode && turn == cheat_turn) {// 是否需要进行cheat检测
+                        char check_cheat = check_limited_move();
+                        if (check_cheat != 0) {// cheat触发！
+                            cout << cheat_content << " 同意请输入" << check_cheat << endl;
+                            has_cheat = true;
+                            cheat_mode = false;
+                        }
                     }
                 }
+            } else {
+                cout << "无效操作，请重试" << endl;
             }
-        } else if (multi_mode && direction == "c") {
-            //检测到作弊码
+        } else if (multi_mode && (direction == "c" || direction == "C")) {//cheat设置
             if (!has_cheat && !cheat_mode) {
                 //检测到作弊码 且之前没有作弊过
                 cheat_mode = true;
+                cheat_turn = (turn + 1) % 2;
                 cin >> cheat_content;
-                cout << cheat_content << endl;
+            } else {
+                cout << "无效操作，请重试" << endl;
             }
         } else {
-            cout << "无效输入，请使用 W S A D 表示上下左右" << endl;
+            cout << "请使用 W S A D 表示上下左右" << endl;
         }
         print();
     }
@@ -98,7 +107,7 @@ void GameBoard::start() {
     } else {
         cout << player_name[turn] << "最终分数为:" << player_score[turn] << endl;
     }
-
+    print();
     cout << "最大方块达到" << node_max << ",游戏结束！" << endl;
 }
 
@@ -131,19 +140,24 @@ bool GameBoard::is_over() {
     int node_max_num = boardSize * boardSize;
     if (node_num <= node_max_num) { return false; }
 
+    if (can_merge()) { return false; }
+    return true;
+}
+
+bool GameBoard::can_merge() {
     int smallSize = boardSize - 1;
     // 对左上角(boardSize-1)*(boardSize-1)的方阵，检测其与右、下是否可合并
     for (int i = 0; i < smallSize; ++i) {
         for (int j = 0; j < smallSize; ++j) {
-            if (board[i][j] == board[i + 1][j] || board[i][j] == board[i][j + 1]) { return false; }
+            if (board[i][j] != 0 && (board[i][j] == board[i + 1][j] || board[i][j] == board[i][j + 1])) { return true; }
         }
     }
     //对最下行和最右列，检测其内部的是否可合并
     for (int i = 0; i < smallSize; ++i) {
         if (board[smallSize][i] == board[smallSize][i + 1] ||
-            board[i][smallSize] == board[i + 1][smallSize]) { return false; }
+            board[i][smallSize] == board[i + 1][smallSize]) { return true; }
     }
-    return true;
+    return false;
 }
 
 void GameBoard::print() {
@@ -334,5 +348,84 @@ void GameBoard::test_mode_on() {
 bool GameBoard::is_out(int row, int col) {
     if (row > boardSize - 1 or row < 0) return true;
     if (col > boardSize - 1 or col < 0) return true;
+    return false;
+}
+
+char GameBoard::check_limited_move() {
+    // 能合并的话至少有两个方向
+    if (can_merge()) return 0;
+
+    bool can_W = false;
+    bool can_A = false;
+    bool can_S = false;
+    bool can_D = false;
+
+    //检测向左是否可动
+    for (int i = 0; i < boardSize; ++i) {
+        if (can_move_line(board[i])) {
+            can_A = true;
+            break;
+        }
+    }
+    //检测向右是否可动
+    for (int i = 0; i < boardSize; ++i) {
+        vector<int> tmp_vector;
+        tmp_vector.assign(board[i].begin(), board[i].end());
+        reverse(tmp_vector.begin(), tmp_vector.end());
+        if (can_move_line(tmp_vector)) {
+            can_D = true;
+            break;
+        }
+    }
+    //检测上下是否可动
+    //先将数组翻转
+    vector <vector<int>> tmp_board;
+    tmp_board.resize(boardSize);
+    for (int i = 0; i < boardSize; ++i) {
+        tmp_board[i].resize(boardSize);
+        for (int j = 0; j < boardSize; ++j) {
+            tmp_board[i][j] = board[j][i];
+        }
+    }
+    //检测向上是否可动
+    for (int i = 0; i < boardSize; ++i) {
+        if (can_move_line(tmp_board[i])) {
+            can_W = true;
+            break;
+        }
+    }
+    //检测向下是否可动
+    for (int i = 0; i < boardSize; ++i) {
+        vector<int> tmp_vector;
+        tmp_vector.assign(tmp_board[i].begin(), tmp_board[i].end());
+        reverse(tmp_vector.begin(), tmp_vector.end());
+        if (can_move_line(tmp_vector)) {
+            can_S = true;
+            break;
+        }
+    }
+
+    int count = 0;
+    if (can_W) { count++; }
+    if (can_S) { count++; }
+    if (can_A) { count++; }
+    if (can_D) { count++; }
+    if (count == 1) {
+        if (can_W) { return 'W'; }
+        if (can_S) { return 'S'; }
+        if (can_A) { return 'A'; }
+        if (can_D) { return 'D'; }
+    } else {
+        return 0;
+    }
+    return 0;
+}
+
+bool GameBoard::can_move_line(vector<int> line) {
+    bool space = false;
+    for (int i:line) {
+        if (i == 0) { space = true; }
+        else { if (space) { return true; }}
+    }
     return false;
 }

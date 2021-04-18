@@ -18,8 +18,8 @@ int main(int argc, char **argv) {
                 // 没有检测参数长度 输入3b将被认可为3
                 char size = argv[i + 1][0];
                 size -= '0';
-                if (size > 5 or size < 3) {
-                    cout << "-s 参数需要是3-5的数字" << endl;
+                if (size > 5 or size < 2) {
+                    cout << "-s 参数需要是2-5的数字，请重新输入命令" << endl;
                     exit(0);
                 } else {
                     gameBoard.boardInit(size);

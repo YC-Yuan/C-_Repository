@@ -3,4 +3,4 @@ project(Lab2)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Lab1 main.cpp GameBoard.cpp GameBoard.h)
+add_executable(Lab2 main.cpp GameBoard.cpp GameBoard.h)
