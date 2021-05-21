@@ -112,7 +112,7 @@ void GameBoard::start() {
 }
 
 void GameBoard::generate_node() {
-    if (node_num == 16) {
+    if (node_num == boardSize * boardSize) {
         cout << "棋盘满了，不应该再生成新数字！" << endl;
     }
     srand(time(nullptr));
@@ -379,7 +379,7 @@ char GameBoard::check_limited_move() {
     }
     //检测上下是否可动
     //先将数组翻转
-    vector <vector<int>> tmp_board;
+    vector<vector<int>> tmp_board;
     tmp_board.resize(boardSize);
     for (int i = 0; i < boardSize; ++i) {
         tmp_board[i].resize(boardSize);
