@@ -44,3 +44,55 @@ void GameBoard::generate_node() {
         }
     }
 }
+
+vector<vector<int>> GameBoard::move(vector<vector<int>> origin_board, char direction) {
+
+
+    return vector<vector<int>>();
+}
+
+vector<vector<int>> GameBoard::move_left(vector<vector<int>> origin_board) {
+    for (auto &i : origin_board) {
+        i = move_line_left(i);
+    }
+    return origin_board;
+}
+
+vector<int> GameBoard::move_line_left(vector<int> origin_line) {
+    int currIndex = 0;
+    for (const auto &item : origin_line) {
+        if (item != 0) {
+            origin_line[currIndex] = item;
+            currIndex++;
+        }
+    }
+    for (int i = currIndex; i < origin_line.size(); ++i) {
+        origin_line[i] = 0;
+    }
+    return origin_line;
+}
+
+void GameBoard::test() {
+    vector<vector<int>> board = {{0, 1, 1, 1},
+                                 {1, 2, 0, 3},
+                                 {1, 2, 4, 5},
+                                 {0, 0, 0, 0}};
+
+    for (const auto &item : board) {
+        for (const auto &i : item) {
+            cout << i;
+        }
+        cout << endl;
+    }
+
+    board = move_left(board);
+
+
+    for (const auto &item : board) {
+        for (const auto &i : item) {
+            cout << i;
+        }
+        cout << endl;
+    }
+}
+

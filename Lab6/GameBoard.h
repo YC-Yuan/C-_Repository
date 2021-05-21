@@ -7,7 +7,7 @@
 
 #include "Player.h"
 #include "CheatModule.h"
-#include "vector"
+#include <vector>
 #include "iostream"
 #include "ctime"
 
@@ -30,12 +30,15 @@ class GameBoard {
 
     // 测试模式，node_max达到64就结束
     bool test_mode = false;
+    bool test_max_node = 64;
 
     // 作弊码模块
     CheatModule cheat;
 
 public:
     GameBoard();
+
+    void test();
 
     void start();
 
@@ -61,7 +64,11 @@ private:
     void print_score(vector<Player> players, int turn);
 
     // 棋盘朝某个方向移动
-    vector<vector<int>> move(vector<vector<int>> board, char direction);
+    vector<vector<int>> move(vector<vector<int>> origin_board, char direction);
+
+    static vector<vector<int>> move_left(vector<vector<int>> origin_board);
+
+    static vector<int> move_line_left(vector<int> origin_line);
 
     // 棋盘朝某方向合并
     vector<vector<int>> merge(vector<vector<int>> board, char direction);

@@ -1,6 +1,9 @@
 #include <iostream>
+#include "GameBoard.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    GameBoard gameBoard;
+    gameBoard.test();
+    cout<<"结束啦";
     return 0;
 }
