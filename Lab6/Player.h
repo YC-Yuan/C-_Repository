@@ -10,8 +10,9 @@
 using namespace std;
 
 class Player {
+public:
     string name;
-    int score=0;
+    int score = 0;
 };
 
 

@@ -14,22 +14,25 @@ class CheatModule {
     bool active = false;
     // 是否已经cheat完
     bool done = false;
+
+public:
     // cheat的内容
     string content;
-public:
+    int turn;
+
     CheatModule();
 
     // 是否允许新的cheat
-    bool canCheat();
+    bool can_cheat() const;
 
     // 设置cheat
-    void setCheat(string content);
+    void set_cheat(string cheat_content, int cheat_turn);
 
     // 是否需要检测cheat生效
-    bool needDetect();
+    bool need_detect(int detect_turn) const;
 
-    // cheat生效
-    void doCheat();
+    // cheat生效后调用
+    void do_cheat();
 };
 
 

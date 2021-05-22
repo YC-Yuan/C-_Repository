@@ -8,7 +8,9 @@
 #include "Player.h"
 #include "CheatModule.h"
 #include <vector>
-#include "iostream"
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "ctime"
 
 using namespace std;
@@ -30,7 +32,7 @@ class GameBoard {
 
     // 测试模式，node_max达到64就结束
     bool test_mode = false;
-    bool test_max_node = 64;
+    int test_max_node = 64;
 
     // 作弊码模块
     CheatModule cheat;
@@ -38,7 +40,7 @@ class GameBoard {
 public:
     GameBoard();
 
-    void test();
+    void test(const string &in_name, const string &out_name);
 
     void start();
 
@@ -50,28 +52,44 @@ public:
 
 private:
     // 生成新node
-    void generate_node();
+    vector<int> generate_node();
 
     bool is_over();
 
     // 打印当前玩家信息
-    void print_player(vector<Player> players, int turn);
+    static void print_player(vector<Player> players, int turn);
 
     // 打印棋盘
     void print_board();
 
     // 打印当前玩家分数
-    void print_score(vector<Player> players, int turn);
+    static void print_score(vector<Player> players, int turn);
+
+    // 棋盘接受指令：移动+合并+移动
+    vector<vector<int>> play(vector<vector<int>> origin_board, char direction, bool real);
+
+    // 检测指令是否有效
+    bool can_play(const vector<vector<int>> &origin_board, char direction);
 
     // 棋盘朝某个方向移动
-    vector<vector<int>> move(vector<vector<int>> origin_board, char direction);
+    static vector<vector<int>> move(vector<vector<int>> origin_board, char direction);
 
     static vector<vector<int>> move_left(vector<vector<int>> origin_board);
 
     static vector<int> move_line_left(vector<int> origin_line);
 
+    // 将期盼顺时针转动90度
+    static vector<vector<int>> rotate(vector<vector<int>> origin_board);
+
     // 棋盘朝某方向合并
-    vector<vector<int>> merge(vector<vector<int>> board, char direction);
+    vector<vector<int>> merge(vector<vector<int>> origin_board, char direction, bool real);
+
+    vector<vector<int>> merge_left(vector<vector<int>> origin_board, bool real);
+
+    vector<int> merge_line_left(vector<int> origin_line, bool real);
+
+    static bool is_different(vector<vector<int>> board_i, vector<vector<int>> board_j);
+
 };
 
 
