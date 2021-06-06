@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "CheatModule.h"
 #include "Log.h"
+#include "Bonus.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -40,6 +41,8 @@ class GameBoard {
     int test_max_node = 64;
 
     // 激励模式，两次移动间隔小于一秒钟额外加分
+    Bonus bonus;
+    bool bonus_mode=false;
 
     // 作弊码模块
     CheatModule cheat;
@@ -53,6 +56,8 @@ public:
     void test_mode_on();
 
     void log_mode_on();
+
+    void bonus_mode_on(bool need_log);
 
     void board_init(int size);
 

@@ -13,11 +13,16 @@
 
 using namespace std;
 
+static ofstream out;
+
 class Log {
-    ofstream out;
     string prefix;
 public:
-    Log(const string &file_path, string prefix);
+    static void init();
+
+    Log();
+
+    explicit Log(string prefix);
 
     void log(const string &name, const string &direction, int score);
 

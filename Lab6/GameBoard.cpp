@@ -89,6 +89,15 @@ void GameBoard::start() {
                     log_motivation.log(players[turn].name, instruction, changed_score);
                 }
 
+                if (bonus_mode) {
+                    // 检查奖励
+                    int bonus_score = bonus.check_bonus(players[turn].name);
+                    if (bonus_score != 0) {
+                        cout << players[turn].name << "迅速反应！获得额外奖励分数" << bonus.bonus << "分" << endl;
+                        players[turn].score += bonus_score;
+                    }
+                }
+
                 turn = (turn + 1) % playerNumber;// 更换玩家
             } else {
                 cout << "无效操作，请重试" << endl;
@@ -430,7 +439,16 @@ void GameBoard::test(const string &in_name, const string &out_name) {
 }
 
 void GameBoard::log_mode_on() {
-    this->log_motivation = Log("motivation_log.txt", "移动得分：");
+    this->log_motivation = Log("移动得分：");
+    Log::init();
     this->log_mode = true;
 }
 
+void GameBoard::bonus_mode_on(bool need_log) {
+    this->bonus_mode = true;
+    if (need_log) {
+        this->bonus = Bonus("奖励得分：");
+    } else {
+        this->bonus = Bonus();
+    }
+}

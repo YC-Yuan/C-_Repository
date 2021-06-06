@@ -4,7 +4,7 @@
 
 ## 编译指南
 
->g++ main.cpp GameBoard.cpp Player.cpp CheatModule.cpp
+>g++ main.cpp GameBoard.cpp Player.cpp CheatModule.cpp Bonus.cpp Log.cpp
 
 需要在UTF-8的命令行运行否则会有中文乱码
 
@@ -21,3 +21,7 @@
 输入输出文件同时设置才会触发输出功能
 
 输入输出功能与游戏进程不冲突，程序将在完成输出后开启游戏（-t -s参数也是有效的）
+
+-p 打开奖励功能，玩家在1秒之内作出反应将额外获得一分
+
+-log 打开日志功能，在txt文件中记录玩家每次得分的操作（如果开启了奖励模式，也将记录奖励得分）

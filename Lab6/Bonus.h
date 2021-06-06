@@ -10,15 +10,20 @@
 #include "ctime"
 
 static auto pre_time = std::chrono::steady_clock::now();
+static Log log;
 
 class Bonus {
 public:
-// 跟内部的时间做比较，更新时间，如果间隔小则进行输出分数
-    bool check_bonus(string player_name);
+    // 跟内部的时间做比较，更新时间，如果间隔小则进行日志输出。返回值为奖励得分，0为不奖励
+    int check_bonus(const string &player_name) const;
 
-private:
-    Log log = Log("bonus_log.txt", "奖励得分：");
+    Bonus();
+
+    explicit Bonus(string prefix);
+
     int bonus = 1;
+private:
+    bool log_mode = false;
 };
 
 

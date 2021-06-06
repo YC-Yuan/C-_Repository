@@ -23,10 +23,21 @@ int main(int argc, char **argv) {
 
     GameBoard gameBoard;
     gameBoard.board_init(4);
+
+    string test_mode = "-t";
+    string size_change = "-s";
+    string log_mode = "-log";
+    string bonus_mode = "-p";
+    bool log_mode_bool = false;
+
     for (int i = 0; i < argc; ++i) {
-        string test_mode = "-t";
-        string size_change = "-s";
-        string log_mode = "-log";
+        if (log_mode == (argv[i])) {
+            cout << "开启日志功能，将生成txt日志文件" << endl;
+            gameBoard.log_mode_on();
+            log_mode_bool = true;
+        }
+    }
+    for (int i = 0; i < argc; ++i) {
         if (test_mode == (argv[i])) {
             cout << "开启测试模式,合成出数字64时游戏结束" << endl;
             gameBoard.test_mode_on();
@@ -41,9 +52,10 @@ int main(int argc, char **argv) {
                     gameBoard.board_init(size);
                 }
             }
-        } else if (log_mode == (argv[i])) {
-            cout << "开启日志功能，将生成txt日志文件" << endl;
-            gameBoard.log_mode_on();
+        } else if (bonus_mode == (argv[i])) {
+            cout << "开启奖励功能，1秒内操作可获得额外分数";
+            // 根据log_mode_bool决定是否开启日志
+            gameBoard.bonus_mode_on(log_mode_bool);
         }
     }
     gameBoard.start();

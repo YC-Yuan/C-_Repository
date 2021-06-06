@@ -22,11 +22,16 @@ string Log::get_time_string() {
 }
 
 void Log::log(const string &name, const string &direction, int score) {
-    this->out << prefix << name << ' ' << get_time_string() << ' ' << direction << ' ' << score << "\n";
-    this->out.flush();
+    out << prefix << name << ' ' << get_time_string() << ' ' << direction << ' ' << score << "\n";
+    out.flush();
 }
 
-Log::Log(const string& file_path, string prefix) {
-    out.open(file_path);
-    this->prefix = std::move(prefix);
+Log::Log(string prefix) {
+    this->prefix = move(prefix);
 }
+
+void Log::init() {
+    out.open("log.txt");
+}
+
+Log::Log() = default;
