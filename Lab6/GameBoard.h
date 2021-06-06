@@ -7,6 +7,7 @@
 
 #include "Player.h"
 #include "CheatModule.h"
+#include "Log.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -30,13 +31,18 @@ class GameBoard {
     vector<Player> players;
     int turn = 0;
 
+    // 得分log模块
+    Log log_motivation;
+    bool log_mode = false;
+
     // 测试模式，node_max达到64就结束
     bool test_mode = false;
     int test_max_node = 64;
 
+    // 激励模式，两次移动间隔小于一秒钟额外加分
+
     // 作弊码模块
     CheatModule cheat;
-
 public:
     GameBoard();
 
@@ -45,6 +51,8 @@ public:
     void start();
 
     void test_mode_on();
+
+    void log_mode_on();
 
     void board_init(int size);
 

@@ -26,6 +26,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < argc; ++i) {
         string test_mode = "-t";
         string size_change = "-s";
+        string log_mode = "-log";
         if (test_mode == (argv[i])) {
             cout << "开启测试模式,合成出数字64时游戏结束" << endl;
             gameBoard.test_mode_on();
@@ -40,6 +41,9 @@ int main(int argc, char **argv) {
                     gameBoard.board_init(size);
                 }
             }
+        } else if (log_mode == (argv[i])) {
+            cout << "开启日志功能，将生成txt日志文件" << endl;
+            gameBoard.log_mode_on();
         }
     }
     gameBoard.start();

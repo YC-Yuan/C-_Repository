@@ -12,15 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae7ead64-6f62-4281-ab3d-68368c724683" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Bonus.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bonus.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Log.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Log.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheatModule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CheatModule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheatModule.h" beforeDir="false" afterPath="$PROJECT_DIR$/CheatModule.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameBoard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GameBoard.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameBoard.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameBoard.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/a.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.out" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +81,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Lab6" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Lab6" TARGET_NAME="Lab6" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Lab6" RUN_TARGET_NAME="Lab6">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -106,6 +114,9 @@
       <workItem from="1621610611734" duration="2000" />
       <workItem from="1621610660332" duration="4031000" />
       <workItem from="1621659615207" duration="15383000" />
+      <workItem from="1622728384067" duration="779000" />
+      <workItem from="1622732188481" duration="73000" />
+      <workItem from="1622963100377" duration="6377000" />
     </task>
     <servers />
   </component>

@@ -74,13 +74,21 @@ void GameBoard::start() {
         string instruction;
         cin >> instruction;
         if (instruction == "w" or instruction == "z" or instruction == "a" or instruction == "s") {
-            vector<vector<int>> orign_board = board;
+            vector<vector<int>> origin_board = board;
+            int origin_score = players[turn].score;
             board = play(board, instruction[0], true);
-            bool is_changed = is_different(orign_board, board);
-            if (is_changed) {// 操作有效,产生新数组、判断游戏结束、更换玩家
+            bool is_changed = is_different(origin_board, board);
+            if (is_changed) {// 操作有效,产生新数组、判断游戏结束、更换玩家、生成日志
                 generate_node();
                 if (is_over()) { break; }
                 print_score(players, turn);
+
+                // 日志,在有得分的时候进行输出
+                int changed_score = players[turn].score - origin_score;
+                if (log_mode && changed_score > 0) {
+                    log_motivation.log(players[turn].name, instruction, changed_score);
+                }
+
                 turn = (turn + 1) % playerNumber;// 更换玩家
             } else {
                 cout << "无效操作，请重试" << endl;
@@ -94,6 +102,9 @@ void GameBoard::start() {
         }
         print_board();
     }
+
+    // 游戏结束处理
+    log_motivation.close();
     print_board();
     int max_score = 0;
     for (const auto &item : players) {
@@ -416,5 +427,10 @@ void GameBoard::test(const string &in_name, const string &out_name) {
     out << score_change << endl;
     out.close();
     fin.close();
+}
+
+void GameBoard::log_mode_on() {
+    this->log_motivation = Log("motivation_log.txt", "移动得分：");
+    this->log_mode = true;
 }
 
