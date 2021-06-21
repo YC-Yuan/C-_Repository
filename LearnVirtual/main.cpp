@@ -2,10 +2,8 @@
 
 class Parent{
 public:
-    int a=1;
-    void print(){
+    virtual void print(){
         std::cout<<"Print in parent"<<std::endl;
-        std::cout<<a<<std::endl;
     }
 };
 
@@ -32,6 +30,11 @@ void printParent(Parent& parent){
 
 void printMiddle(Middle& middle){
     middle.print();
+}
+
+// 如果传入的不是parent的引用而是其本身，那么就算有virtual也会调用原来的接口
+void func(Parent parent){
+    parent.print();
 }
 
 int main() {
