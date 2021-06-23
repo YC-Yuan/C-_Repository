@@ -12,24 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26df411b-a385-41bd-9a20-8f2d84053fe3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/.idea/LearnConstClass.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LearnConstClass/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/a.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/n1.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PaperTest/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LearnVirtual/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../LearnVirtual/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,13 +41,12 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OperatorOverload" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OperatorOverload" TARGET_NAME="OperatorOverload" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OperatorOverload" RUN_TARGET_NAME="OperatorOverload">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -84,6 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1624290085651</updated>
       <workItem from="1624290087204" duration="16000" />
+      <workItem from="1624294266425" duration="1464000" />
     </task>
     <servers />
   </component>

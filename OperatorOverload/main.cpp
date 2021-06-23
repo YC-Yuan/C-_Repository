@@ -13,10 +13,6 @@ public:
     }
 
 private:
-    string toString() const {
-        return to_string(num) + " " + category;
-    };
-
     friend ostream &operator<<(ostream &output, const Money &m) {
         output << m.num << " " << m.category;
         return output;

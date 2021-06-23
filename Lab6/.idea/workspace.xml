@@ -12,14 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae7ead64-6f62-4281-ab3d-68368c724683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../C/.idea/C.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OperatorOverload/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OperatorOverload/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OperatorOverload/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../OperatorOverload/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PaperTest/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PaperTest/.idea/modules.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +105,7 @@
       <workItem from="1622981464544" duration="46000" />
       <workItem from="1622981591866" duration="3032000" />
       <workItem from="1623759949569" duration="145000" />
+      <workItem from="1624419835736" duration="717000" />
     </task>
     <servers />
   </component>
